@@ -127,8 +127,6 @@ def insert(arg) -> None:
         total_rows = len(df)
         rows_inserted = 0
         
-        #Ajoute de la condition si le len(df) == len(table_mysql) sauté directement DEMAIN
-        
         for index, row in tqdm(df.iterrows(), total=total_rows, desc="Check and Insert", unit="row"):
             where_conditions = " AND ".join(f"{col.lower()} = '{row[col]}'" for col in df.columns)
             select_query = f"SELECT * FROM {table_name} WHERE {where_conditions}"
