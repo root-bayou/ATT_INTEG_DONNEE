@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+*.env/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.suo
+*.user
+*.sln.docstates
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Distribution / packaging
+dist/
+build/
+eggs/
+*.egg-info/
+*.egg
+
+# Compiled Python files
+*.pyc
+
+# Compiled C extensions
+*.so
+
+# Miscellaneous
+*.log
+*.bak
+*.tmp
+
+# PyInstaller
+build/
+
+#log and others files
+log/
+*.csv
+*.zip
