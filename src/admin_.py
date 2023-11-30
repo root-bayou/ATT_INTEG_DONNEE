@@ -167,50 +167,6 @@ def insert(arg) -> None:
     except Exception as e : 
         print_f(f"[Faillure] : {e}")
 
-def insert_population_col(arg) -> None : 
-    
-    BASE_URL : str = 'https://geo.api.gouv.fr/communes'
-    HEADERS : str = {
-        'content-type': "application/json",
-        }
-    
-    conn = mysql_connect(arg)
-    cursor = conn.cursor()
-    
-    try : 
-        cursor.execute("ALTER TABLE table_test_api ADD COLUMN population INT;")
-        conn.commit()
-    except Exception as e : 
-        print(e)
-        pass
-    
-    cursor.execute("SELECT code_commune_insee FROM table_test_api")  
-    resultats = cursor.fetchall()
-    progress_bar = tqdm(total=len(resultats), desc="Get population", unit=" lines")
-    
-    for resultat in resultats:
-        para = f'code={resultat[0]}'
-        try : 
-            response = requests.get(url=BASE_URL, params=para, headers=HEADERS)
-            time.sleep(2)
-            if response.status_code == 200 : 
-                data = response.json()
-                cursor.execute(f"UPDATE table_test_api SET population = {int(data[0]['population'])} WHERE code_commune_insee = {resultat[0]};")
-                            
-        except requests.exceptions.HTTPError as errh:
-                print(f"[Error]: {errh}")
-        except requests.exceptions.ConnectionError as errc:
-                print(f"[Error]: {errc}")
-        except requests.exceptions.Timeout as errt:
-                print(f"[Error]: {errt}")
-        except requests.exceptions.RequestException as err:
-                print(f"[Error]: {err}")
-           
-        progress_bar.update(1)
-        
-    
-    conn.commit()
-    conn.close()
                 
 if __name__ == "__main__" :
     
@@ -227,6 +183,7 @@ if __name__ == "__main__" :
     parser.add_argument('--user-password',help='Specify the password user',required=True)
     parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.0')
     args = parser.parse_args()
-    #insert(args)
-    insert_population_col(args) 
+    
+    insert(args)
+   
     

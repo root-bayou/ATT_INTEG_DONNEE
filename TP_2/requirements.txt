@@ -1,0 +1,9 @@
+#Python requirements lists.
+pyfiglet
+pandas
+mysql.connector
+getpass
+requests
+time
+configparser
+tqdm
