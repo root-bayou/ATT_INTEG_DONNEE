@@ -15,4 +15,9 @@ table = le nom de la table à mettre à jour <br>
 #### Assuré-vous d'avoir les accées et les priviléges nécessaires pour mettre à jours votre base de donnée. 
 #### Assuré-vous que le nom de la base et exact et que le table est bien présente.  
 # Exemple : 
+## Lancement du script : 
+![Input](./1-in.png)
+### Traitement
 ![Exemple d'utulisation](./cap.png)
+## Résultats : 
+![Output](./2-out.png)
